@@ -76,4 +76,4 @@ df = pd.DataFrame(
 )
 
 # Display the result
-st.write(df)
+# st.write(df)
