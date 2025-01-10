@@ -39,7 +39,6 @@ X_num = np.array(
 # Load scaler and apply transformation
 with open(file="ss.pkl", mode="rb") as ss_file:
     ss = pickle.load(file=ss_file)
-X_num = np.log1p(X_num)
 X_scaled = ss.transform(X_num)
 
 # Load label encoder if needed (for categorical encoding)
