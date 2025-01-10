@@ -74,6 +74,3 @@ df = pd.DataFrame(
         "quality_pred",
     ],
 )
-
-# Display the result
-# st.write(df)
