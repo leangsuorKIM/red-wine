@@ -39,22 +39,20 @@ X_num = np.array(
 # Load scaler and apply transformation
 with open(file="ss.pkl", mode="rb") as ss_file:
     ss = pickle.load(file=ss_file)
+X_num = np.log1p(X_num)
 X_scaled = ss.transform(X_num)
 
 # Load label encoder if needed (for categorical encoding)
 with open(file="le.pkl", mode="rb") as le_file:
     le = pickle.load(file=le_file)
 
-# Load the pre-trained Linear Regression model
+# Load the pre-trained logistric Regression model
 with open(file="lr.pkl", mode="rb") as lr_file:
     lr = pickle.load(file=lr_file)
 
 # Predict the output
-
 prediction = lr.predict(X_scaled)
-pred = 'bad'
-if (prediction == 1):
-    pred = 'good'
+pred = le.inverse_transform(prediction)
 
 st.write("quality_pred", pred)
 
