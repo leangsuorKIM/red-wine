@@ -1,4 +1,4 @@
-import streamlit as st
+# import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
@@ -17,9 +17,24 @@ sulphates = st.number_input(label="sulphates", value=0.57)
 alcohol = st.number_input(label="alcohol", value=9.7)
 
 # Create the numerical input array (X_num)
-X_num = np.array([[fixed_acidity, volatile_acidity, citric_acid, residual_sugar,
-                   chlorides, free_sulfur_dioxide, total_sulfur_dioxide, density,
-                   pH, sulphates, alcohol]], dtype=np.float32)
+X_num = np.array(
+    [
+        [
+            "fixed_acidity",
+            "volatile_acidity",
+            "citric_acid",
+            "residual_sugar",
+            "chlorides",
+            "free_sulfur_dioxide",
+            "total_sulfur_dioxide",
+            "density",
+            "pH",
+            "sulphates",
+            "alcohol",
+        ]
+    ],
+    dtype=np.float32,
+)
 
 # Load scaler and apply transformation
 with open(file="ss.pkl", mode="rb") as ss_file:
@@ -41,17 +56,28 @@ y_pred = lr.predict(X_scaled)
 y_raw = 1 / y_pred  # Assuming this is the intended transformation
 
 # Clamp the result to be between 2 and 8 (since the quality should be in this range)
-y_raw_clamped = np.clip(np.round(y_raw), 2, 8).astype(int)  # Round and ensure it's between 2 and 8
+y_raw_clamped = np.clip(np.round(y_raw), 2, 8).astype(
+    int
+)  # Round and ensure it's between 2 and 8
 
 # Combine the scaled features and prediction into a DataFrame
 data = np.concatenate([X_scaled, y_raw_clamped.reshape(-1, 1)], axis=1)
 df = pd.DataFrame(
     data=data,
     columns=[
-        'fixed acidity', 'volatile acidity', 'citric acid', 'residual sugar',
-        'chlorides', 'free sulfur dioxide', 'total sulfur dioxide', 'density',
-        'pH', 'sulphates', 'alcohol', 'quality_pred'
-    ]
+        "fixed acidity",
+        "volatile acidity",
+        "citric acid",
+        "residual sugar",
+        "chlorides",
+        "free sulfur dioxide",
+        "total sulfur dioxide",
+        "density",
+        "pH",
+        "sulphates",
+        "alcohol",
+        "quality_pred",
+    ],
 )
 
 # Display the result
