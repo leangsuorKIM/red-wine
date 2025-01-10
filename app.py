@@ -52,8 +52,11 @@ with open(file="lr.pkl", mode="rb") as lr_file:
 # Predict the output
 
 prediction = lr.predict(X_scaled)
+pred = 'bad'
+if (prediction == 1):
+    pred = 'good'
 
-st.write("quality_pred", prediction)
+st.write("quality_pred", pred)
 
 # Combine the scaled features and prediction into a DataFrame
 data = np.concatenate([X_scaled, prediction.reshape(-1, 1)], axis=1)
