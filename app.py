@@ -51,7 +51,7 @@ with open(file="lr.pkl", mode="rb") as lr_file:
 
 # Predict the output
 
-prediction = lr.predict(X)
+prediction = lr.predict(X_scaled)
 prediction_decoded = le.inverse_transform(prediction)
 st.write("quality_pred", prediction_decoded)
 
