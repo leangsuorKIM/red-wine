@@ -20,17 +20,17 @@ alcohol = st.number_input(label="alcohol", value=9.7)
 X_num = np.array(
     [
         [
-            "fixed_acidity",
-            "volatile_acidity",
-            "citric_acid",
-            "residual_sugar",
-            "chlorides",
-            "free_sulfur_dioxide",
-            "total_sulfur_dioxide",
-            "density",
-            "pH",
-            "sulphates",
-            "alcohol",
+            fixed_acidity,
+            volatile_acidity,
+            citric_acid,
+            residual_sugar,
+            chlorides,
+            free_sulfur_dioxide,
+            total_sulfur_dioxide,
+            density,
+            pH,
+            sulphates,
+            alcohol,
         ]
     ],
     dtype=np.float32,
