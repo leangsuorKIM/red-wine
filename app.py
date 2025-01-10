@@ -40,8 +40,11 @@ y_pred = lr.predict(X_scaled)
 # If needed, you can transform the result back (e.g., if it's log-scaled, for instance)
 y_raw = 1 / y_pred  # Assuming this is the intended transformation
 
+# Clamp the result to be between 2 and 8 (since the quality should be in this range)
+y_raw_clamped = np.clip(np.round(y_raw), 2, 8).astype(int)  # Round and ensure it's between 2 and 8
+
 # Combine the scaled features and prediction into a DataFrame
-data = np.concatenate([X_scaled, y_raw.reshape(-1, 1)], axis=1)
+data = np.concatenate([X_scaled, y_raw_clamped.reshape(-1, 1)], axis=1)
 df = pd.DataFrame(
     data=data,
     columns=[
