@@ -1,16 +1,16 @@
-# import streamlit as st
+import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
 
 # Input values
-fixed_acidity = st.number_input(label="fixed acidity", value=7.2)
-volatile_acidity = st.number_input(label="volatile acidity", value=0.660)
-citric_acid = st.number_input(label="citric acid", value=0.03)
-residual_sugar = st.number_input(label="residual sugar", value=2.3)
+fixed_acidity = st.number_input(label="fixed_acidity", value=7.2)
+volatile_acidity = st.number_input(label="volatile_acidity", value=0.660)
+citric_acid = st.number_input(label="citric_acid", value=0.03)
+residual_sugar = st.number_input(label="residual_sugar", value=2.3)
 chlorides = st.number_input(label="chlorides", value=0.078)
-free_sulfur_dioxide = st.number_input(label="free sulfur dioxide", value=16.0)
-total_sulfur_dioxide = st.number_input(label="total sulfur dioxide", value=86.0)
+free_sulfur_dioxide = st.number_input(label="free_sulfur_dioxide", value=16.0)
+total_sulfur_dioxide = st.number_input(label="total_sulfur_dioxide", value=86.0)
 density = st.number_input(label="density", value=0.99743)
 pH = st.number_input(label="pH", value=3.53)
 sulphates = st.number_input(label="sulphates", value=0.57)
@@ -65,13 +65,13 @@ data = np.concatenate([X_scaled, y_raw_clamped.reshape(-1, 1)], axis=1)
 df = pd.DataFrame(
     data=data,
     columns=[
-        "fixed acidity",
-        "volatile acidity",
-        "citric acid",
-        "residual sugar",
+        "fixed_acidity",
+        "volatile_acidity",
+        "citric_acid",
+        "residual_sugar",
         "chlorides",
-        "free sulfur dioxide",
-        "total sulfur dioxide",
+        "free_sulfur_dioxide",
+        "total_sulfur_dioxide",
         "density",
         "pH",
         "sulphates",
